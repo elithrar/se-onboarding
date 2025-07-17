@@ -1,0 +1,56 @@
+{
+  "name": "se-onboarding",
+  "version": "1.0.0",
+  "description": "Modern chat application showcasing Cloudflare's Developer Platform with Workers, AI, Durable Objects, and KV storage",
+  "main": "src/server/index.ts",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "build": "npx esbuild src/client/index.tsx --bundle --splitting --format=esm --platform=browser --outdir=public/dist",
+    "populate-models": "node scripts/populate-models.js",
+    "setup": "npm install && node scripts/populate-models.js"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "workers-ai",
+    "durable-objects",
+    "kv",
+    "chat",
+    "react",
+    "typescript",
+    "edge-computing",
+    "serverless",
+    "ai",
+    "llama",
+    "websocket"
+  ],
+  "author": "Cloudflare",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taslabs-net/seonboardinglab.git"
+  },
+  "homepage": "https://github.com/taslabs-net/seonboardinglab#readme",
+  "bugs": {
+    "url": "https://github.com/taslabs-net/seonboardinglab/issues"
+  },
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20241218.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "esbuild": "^0.21.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^7.0.2",
+    "react-router-dom": "^7.0.2",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3",
+    "wrangler": "^4.24.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

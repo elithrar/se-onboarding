@@ -1,0 +1,38 @@
+name = "se-onboarding"
+main = "src/server/index.ts"
+compatibility_date = "2025-07-16"
+# account_id will be provided by Deploy to Cloudflare
+logpush = true
+
+# SE Onboarding Lab - Cloudflare Onboarding Demo Tool
+# Built by Timothy Schneider <tschneider@cloudflare.com>
+# Demonstrates: Workers AI, mTLS, Service Auth, AI Gateway, 
+# Multi-LLM support, Zero Trust Access, MCP integration, Durable Objects
+
+[build]
+command = "npx esbuild src/client/index.tsx --bundle --splitting --format=esm --platform=browser --outdir=public/dist"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["SeOnboardingChat"]
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[[durable_objects.bindings]]
+name = "SeOnboardingChat"
+class_name = "SeOnboardingChat"
+
+[[kv_namespaces]]
+binding = "KV_STORE"
+id = "5b8b7548011d4298a7d3c1fa6ebf376d"
+preview_id = "se-onboarding-kv-preview"
+
+[ai]
+binding = "AI"
+
+
+[observability.logs]
+enabled = true
